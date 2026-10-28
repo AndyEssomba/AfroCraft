@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfroCraft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Noto+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --afro-brown: #1c130e;
+        --afro-clay: #9c3b1b;
+        --afro-ochre: #d79b3c;
+        --afro-gold: #ffd166;
+        --afro-indigo: #243470;
+        --afro-cream: #f2e2ba;
+      }
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #020611; font-family: 'Noto Sans', system-ui, sans-serif; }
+      #app { position: fixed; inset: 0; }
+      canvas { display: block; }
+      .afro-frame {
+        border: 3px solid var(--afro-ochre) !important;
+        border-radius: 4px !important;
+        background-color: rgba(28,19,14,.88) !important;
+        background-image:
+          repeating-linear-gradient(90deg, transparent 0 9px, rgba(255,209,102,.22) 9px 11px, transparent 11px 18px),
+          repeating-linear-gradient(0deg, transparent 0 9px, rgba(156,59,27,.32) 9px 11px, transparent 11px 18px) !important;
+        box-shadow: inset 0 0 0 2px rgba(16,8,5,.68), 0 4px 18px rgba(0,0,0,.45) !important;
+      }
+      .afro-title-screen, .afro-pause-screen {
+        position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+        overflow: hidden; color: var(--afro-cream); background:
+          radial-gradient(ellipse at 50% 69%, #ff9b4c 0 9%, #e85434 17%, #b94165 32%, #40285e 58%, #071333 100%);
+      }
+      .afro-title-screen::after, .afro-pause-screen::after {
+        content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 25%;
+        background: linear-gradient(#45231a 0 10%, #24170f 10% 100%); opacity: .9;
+      }
+      .afro-title-sun { position:absolute; width:min(38vw,360px); aspect-ratio:1; border-radius:50%; top:18%; background:#ff9d3e; box-shadow:0 0 90px #ff6f37; }
+      .afro-baobab-silhouette { position:absolute; width:min(64vw,660px); height:auto; bottom:8%; fill:#160e0b; z-index:1; filter:drop-shadow(0 0 18px rgba(0,0,0,.35)); }
+      .afro-title-content { position:relative; z-index:2; width:min(560px,calc(100vw - 48px)); padding:34px 42px; text-align:center; }
+      .afro-title-kicker { margin:0; color:var(--afro-gold); font-size:12px; font-weight:800; letter-spacing:.22em; }
+      .afro-title-content h1 { margin:6px 0 0; font-family:'Bowlby One SC', Impact, sans-serif; color:#ffe0a1; font-size:clamp(48px,11vw,92px); line-height:1; text-shadow:4px 5px 0 #762f26, 0 0 18px rgba(255,181,73,.5); }
+      .afro-title-subtitle { margin:17px auto; max-width:420px; font-size:16px; }
+      .afro-title-loading { min-height:1.4em; margin:18px 0 10px; color:#f5d899; font-size:14px; }
+      .afro-title-content button, .afro-pause-panel button {
+        padding:12px 40px; border:2px solid #ffe0a1; border-radius:3px; background:#9c3b1b; color:#fff4d0;
+        font:800 18px 'Noto Sans', sans-serif; letter-spacing:.08em; cursor:pointer; box-shadow:0 3px 0 #4a180d;
+      }
+      .afro-title-content button:hover:not(:disabled), .afro-pause-panel button:hover { background:#c45a27; transform:translateY(-1px); }
+      .afro-title-content button:disabled { cursor:wait; opacity:.7; }
+      .afro-pause-screen { z-index:40; display:none; background:rgba(5,7,20,.74); backdrop-filter:blur(5px); }
+      .afro-pause-panel { width:min(500px,calc(100vw - 48px)); padding:28px 34px; text-align:center; }
+      .afro-pause-panel h2 { margin:4px 0 20px; font-family:'Bowlby One SC', Impact, sans-serif; color:#ffe0a1; font-size:42px; text-transform:uppercase; }
+      .afro-pause-panel h3 { margin:24px 0 8px; color:var(--afro-gold); font-size:15px; letter-spacing:.12em; text-transform:uppercase; }
+      .afro-pause-commands { display:grid; grid-template-columns:1fr 1fr; gap:6px 12px; margin:0; text-align:left; font-size:13px; }
+      .afro-pause-commands dt { color:#ffe0a1; font-weight:700; }
+      .afro-pause-commands dd { margin:0; color:#e5d9c0; }
+      .afro-ui-frame { border:3px solid var(--afro-ochre) !important; border-radius:4px !important; background-color:rgba(28,19,14,.84) !important; background-image:repeating-linear-gradient(90deg, transparent 0 8px, rgba(255,209,102,.16) 8px 10px, transparent 10px 16px) !important; box-shadow:inset 0 0 0 2px rgba(13,8,5,.72),0 3px 14px rgba(0,0,0,.4) !important; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
